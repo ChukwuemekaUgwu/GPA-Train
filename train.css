@@ -1,0 +1,48 @@
+#top-page-bar{
+    background-color: darkgrey;
+    margin-top: 0;
+    margin-left: 0;
+    box-sizing: border-box;
+}
+/* .button{
+    display: inline-flex;
+    box-sizing: border-box;
+    right: 0;
+} */
+.button__text{
+    text-align: center;
+}
+#manualpageaccountbutton{
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+}
+#btn-account{
+    position: relative;
+    left: 10px;
+    bottom: 0;
+}
+#btn-bigred{
+    background-color: red;
+    color: whitesmoke;
+    
+}
+.bigwords{
+    font-size: xx-large;
+    font-weight: bold;
+    color: black;
+    text-shadow: 10pt;
+    text-align: center;
+}
+#testt1{
+    position: relative;
+    display: block;
+    background-color: white;
+    right: 0vw;
+    
+
+}
+#topnavbar{
+    background-color: #B106C2;
+}
+
