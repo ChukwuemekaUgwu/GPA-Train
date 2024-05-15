@@ -21,47 +21,59 @@
     </style>
 </head>
 <body>   <!-- adding background image to the entire webpage -->   
-    <nav class="navbar bg-body-tertiary" >
-        <div class="container-fluid" id="topnavbar">
-          <a class="navbar-brand" href="homepage.html">
-            <img src="#" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="homepage__navbar__div">
+        <div class="container-fluid" id="homepage__navbar">
+          <a class="navbar-brand" href="homepage.html" id="logo__info">
+            <img src="./trainlogo1.jpeg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
             GPA Train
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="nav nav-underline" >
-                <li class="nav-item" type="button" id="testt1">
-                    <a id="testt1" class="nav-link active" aria-current="page" href="#">Account</a>
+                <li class="nav-item" type="button">
+                    <a class="nav-link active" aria-current="page" href="#">
+                        <span class="account__icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                        <span class="account__text">Sign In</span>
+                      </a>
+                    
                 </li>
             </ul>
         </div>
         </div>
       </nav>
     
-    <div class="bigwords">
+    <div class="big__words">
         <span> Welcome to GPA-Train</span>
     </div>
+    <div class="medium__words" id="mission__statemenet"> 
+        <span> A powerful tool designed to help students quickly understand their current GPA and work through future GPA outcomes</span>
+    </div>
     
-    <div>
-        <a href="#" >
-        <button type="button" id="btn-account"  > 
-            <span class="button__text">Manual Entry</span>
-            <span class="button__icon"></span>
-        </button>
-        </a>
-        <a href="#" >
-        <button type="button" id="btn-account"  > 
-            <span class="button__text">Automatic Trancript Entry</span>
-            <span class="button__icon"></span>
-        </button>
-        </a>
+    <div class="flex__container">
+        <div class="entry__button__container">
+            <a href="manualpage.html" >
+                <button type="button" class="entry__button" id="manual__entry__button"  > 
+                    <span class="button__text">Manual Entry</span>
+                    <span class="button__icon"></span>
+                </button>
+                </a>
+                <a href="#" >
+                <button type="button" class="entry__button" id="auto__entry__button"  > 
+                    <span class="button__text">Automatic Entry</span>
+                    <span class="button__icon"> </span>
+                </button>
+            </a>
+        </div>
+        
+        
     </div>
     <div>
         <a href="#"><button type="button" id="btn-bigred">BIGRED</button></a>
-        
     </div>
+    
+    
     
    
     <!-- Keep Section Down -->
