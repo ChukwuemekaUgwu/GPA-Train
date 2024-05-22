@@ -1,0 +1,57 @@
+.gpa__page{
+    background-color: whitesmoke;
+}
+.gpa__table{
+
+}
+.gpa__terms{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.gpa__term{
+    position: relative;
+    width: calc(50% - 4%);
+    margin: 2%;
+    box-sizing: border-box;
+    
+}
+.gpa__term__header{
+
+}
+.courses{
+
+}
+.course{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns, equal width */
+    grid-template-rows: auto auto;  /* Two rows */
+    gap: 0.5rem; /* Space between items */
+    align-items: start;
+
+}
+.course__name{
+    grid-column: 1 / 3; /* Span both columns */
+    grid-row: 1; /* First row */
+
+}
+.course__grade{
+    grid-row: 2;
+    margin-bottom: 0.5rem; /* Space between the elements */
+    padding: 0.5rem;       /* Padding inside the input and select */
+    font-size: 1rem; 
+}
+.credit__box{
+    
+}
+.gpa__term__output{
+
+}
+/* 
+1. Semester # only updates with newSemester click 
+2. Page spawns in with only default of Semester 1
+*/
