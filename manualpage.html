@@ -50,13 +50,13 @@
     <div class="gpa__page">
         <div class="gpa__table">
             <ul class="gpa__terms"> <!-- pgs-->
-                <li class="gpa__term"></li>
+                <li class="gpa__term"></li> <!--This will become a caboose-->
                 <li class="gpa__term" id="term1">
                     <div class="gpa__term__header">
-                        Semester 1
+                        Term 1
                     </div>
                     <div class="courses">
-                        <div class="course">
+                        <div class="course" id="course1">
                             <input class="course__name" placeholder="Course Name" type="text"> </input>
                             <select class="course__grade" placeholder="Grade">
                                 <option selected="selected" disabled="disabled" hidden="hidden">Grade</option>
@@ -136,13 +136,12 @@
                             </select>
                             <input class="credit__box" placeholder="Credits"></input>
                         </div>
-
                     </div>
+                    <button class="new__course">Add Course</button>
                     <div class="gpa__term__output"></div>
-                    <button class="new_term"> Add Term</button>
                 </li>
-
             </ul>
+            <button class="new_term"> Add Term</button>
         </div>
     </div>
     
