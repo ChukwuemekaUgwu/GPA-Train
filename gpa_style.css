@@ -35,7 +35,7 @@
 
 }
 .course__name{
-    grid-column: 1 / 3; /* Span both columns */
+    grid-column: 1 / 2; /* Span both columns */
     grid-row: 1; /* First row */
 
 }
@@ -46,7 +46,19 @@
     font-size: 1rem; 
 }
 .credit__box{
+    grid-row: 2;
     
+}
+.delete__icon{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1px;
 }
 .gpa__term__output{
 

@@ -7,6 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const newTermButton = document.querySelector('.new_term');
     newTermButton.addEventListener('click', addTerm);
 
+    const initialDeleteButtons = document.querySelectorAll('#term1 .delete__icon');
+    initialDeleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const course = button.closest('.course');
+            course.remove();
+        });
+    });
+
     function addTerm() {
         // Find the term1 element
         const term1 = document.getElementById('term1');
@@ -44,10 +52,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function addCourse(event) {
         const termElement = event.target.closest('.gpa__term');
         const coursesContainer = termElement.querySelector('.courses');
-        const firstCourse = coursesContainer.querySelector('.course');
+        const firstCourse = document.querySelector('#term1 .course'); // Get the first course as a template
         const newCourse = firstCourse.cloneNode(true);
         newCourse.querySelectorAll('input').forEach(input => input.value = '');
         newCourse.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+        
+        const deleteButton = newCourse.querySelector('.delete__icon');
+        deleteButton.addEventListener('click', function() {
+            newCourse.remove();
+        });
         coursesContainer.appendChild(newCourse);
     }
 });
