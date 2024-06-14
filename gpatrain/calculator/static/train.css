@@ -1,0 +1,106 @@
+.account__text{
+    padding: 5px;;
+}
+.account__icon{
+    padding: 5px
+}
+.flex__container{
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+    height: 50vh; /* Adjust as needed to center vertically */
+}
+.entry__button__container{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+}
+.big__words{
+    font-size: xx-large;
+    font-weight: bold;
+    color: black;
+    text-shadow: 10pt;
+    text-align: center;
+}
+.button__text{
+    text-align: center;
+}
+.medium__words{
+    font-size: larger;
+    font-weight: 600;
+    color: black;
+    text-decoration: wavy;
+    text-align: center;
+}
+#homepage__navbar{
+    position: relative;
+    background-origin: padding-box;
+    background-color: #B106C2;
+    margin:0%;
+    padding: 0;
+}
+#homepage__navbar__div{
+    padding: 0;
+}
+#top-page-bar{
+    background-color: darkgrey;
+    margin-top: 0;
+    margin-left: 0;
+    box-sizing: border-box;
+}
+/* .button{
+    display: inline-flex;
+    box-sizing: border-box;
+    right: 0;
+} */
+
+#manualpageaccountbutton{
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+}
+#logo__info{
+    padding: 5px;
+}
+#btn-account{
+    position: relative;
+    left: 10px;
+    bottom: 0;
+}
+#btn-bigred{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: -40%;
+    background-color: red;
+    color: whitesmoke;
+    border-radius: 100px;
+    
+}
+
+#testt1{
+
+    display: block;
+    background-color: white;
+    right: 0vw;
+}
+.entry__button{
+
+
+    align-items: center;
+    justify-content: center;
+    height: 60%;
+    width: 160px;
+    padding: 5px;
+    margin: 30px;
+    border-radius: 30px;
+    background-color:#8C91DE;
+    border:none;
+    color:white;
+
+ }
+
+/* A powerful tool to help student quickly understand their current GPA and work future GPA outcomes */
