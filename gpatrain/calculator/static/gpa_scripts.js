@@ -1,8 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initial setup: Add event listener to the first term's "Add Course" button
     const initialNewCourseButton = document.querySelector('#term1 .new__course');
+    // const initCourseButton = document.querySelector(#term1 .new__course);
     initialNewCourseButton.addEventListener('click', addCourse);
-
+    // initCourseButton.addEventListener('click', addCourse);
+    // function addCourse(event){
+        // const oldcourse = document.querySelector()
+        
+    // }
     // Add event listener to the "Add Term" button
     const newTermButton = document.querySelector('.new_term');
     newTermButton.addEventListener('click', addTerm);
@@ -12,55 +17,94 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const course = button.closest('.course');
             course.remove();
+            updateGPA();
         });
     });
 
+    // Add event listeners to the course inputs for GPA calculation
+    const gpaForm = document.querySelector('.gpa__table');
+    gpaForm.addEventListener('change', function(event) {
+        if (event.target.matches('.course__grade, .credit__box')) {
+            updateGPA();
+        }
+    });
+
     function addTerm() {
-        // Find the term1 element
         const term1 = document.getElementById('term1');
-        
-        // Clone the term1 element
         const newTerm = term1.cloneNode(true);
-        
-        // Get the current number of terms to set a new ID and update the header
         const termCount = document.querySelectorAll('.gpa__term').length;
-        
-        // Update the ID and header of the new term
         newTerm.id = `term${termCount + 1}`;
-        newTerm.querySelector('.gpa__term__header').textContent = `Term ${termCount + 1}`;
-        
-        // Clear the inputs in the cloned element
+        newTerm.querySelector('.gpa__term__header .term__number').textContent = `Term ${termCount + 1}`;
         newTerm.querySelectorAll('input').forEach(input => input.value = '');
         newTerm.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
-        
-        // Add event listener to the new term's "Add Course" button
+
         const newCourseButton = newTerm.querySelector('.new__course');
-        newCourseButton.removeEventListener('click', addCourse); // Ensure no old listener is carried over
-        newCourseButton.addEventListener('click', addCourse); // Add new listener
-        
-        // Append the new term to the list
-        document.querySelector('.gpa__terms').appendChild(newTerm);
-        
-        // Ensure the new term has exactly four courses
+        newCourseButton.removeEventListener('click', addCourse);
+        newCourseButton.addEventListener('click', addCourse);
+
         const coursesContainer = newTerm.querySelector('.courses');
-        coursesContainer.innerHTML = ''; // Clear current courses
+        coursesContainer.innerHTML = '';
         for (let i = 0; i < 4; i++) {
             addCourse({ target: newCourseButton });
         }
+
+        document.querySelector('.gpa__terms').appendChild(newTerm);
     }
 
     function addCourse(event) {
         const termElement = event.target.closest('.gpa__term');
         const coursesContainer = termElement.querySelector('.courses');
-        const firstCourse = document.querySelector('#term1 .course'); // Get the first course as a template
+        const firstCourse = document.querySelector('#term1 .course');
         const newCourse = firstCourse.cloneNode(true);
         newCourse.querySelectorAll('input').forEach(input => input.value = '');
         newCourse.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
-        
+
         const deleteButton = newCourse.querySelector('.delete__icon');
         deleteButton.addEventListener('click', function() {
             newCourse.remove();
+            updateGPA();
         });
+
         coursesContainer.appendChild(newCourse);
+    }
+
+    function updateGPA() {
+        const courses = Array.from(document.querySelectorAll('.course')).map(course => {
+            return {
+                name: course.querySelector('.course__name').value,
+                grade: parseFloat(course.querySelector('.course__grade').value),
+                credits: parseFloat(course.querySelector('.credit__box').value)
+            };
+        }).filter(course => !isNaN(course.grade) && !isNaN(course.credits));
+
+        fetch('/api/gpa-calculate/', {  // Adjust the URL based on your actual API endpoint
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')  // Ensure CSRF token is included if needed
+            },
+            body: JSON.stringify({courses: courses})
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('.gpa__term__output').textContent = `Calculated GPA: ${data.gpa.toFixed(2)}`;
+        })
+        .catch(error => console.error('Error calculating GPA:', error));
+    }
+
+    // Helper function to get CSRF token
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
     }
 });
