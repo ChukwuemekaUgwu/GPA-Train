@@ -9,11 +9,9 @@ class Term(models.Model):
     @property
     def totalCredits(self):
         return sum(course.credits for course in self.courses.all())
-
     @property
     def totalTermEarnedScore(self):
         return sum(course.earned_score for course in self.courses.all())
-    
     @property
     def termGPA(self):
         try:
@@ -26,18 +24,14 @@ class Course(models.Model):
     credits = models.PositiveSmallIntegerField()
     grade  = models.FloatField()
     term = models.ForeignKey(Term, related_name='courseList', on_delete=models.CASCADE) # is this still neccessary / wi purpose
-    
     @property
     def earned_score(self):
        return self.credits * self.grade
-    
-
     def __str__ (self):
         return self.name
 
 class AllTerms(models.Model):
     terms = models.ManyToManyField(Term)
-
     @property
     def cumCredits(self):
         return sum(term.totalCredits for term in self.terms.all())

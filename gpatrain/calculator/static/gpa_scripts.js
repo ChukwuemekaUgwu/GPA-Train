@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            document.querySelector('.gpa__term__output').textContent = `Calculated GPA: ${data.gpa.toFixed(2)}`;
+            document.querySelector('.gpa__term__output').textContent = `Calculated GPA: ${data.gpa.toFixed(2)}`; //Change to term__gpa
         })
         .catch(error => console.error('Error calculating GPA:', error));
     }

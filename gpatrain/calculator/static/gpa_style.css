@@ -20,6 +20,13 @@
     box-sizing: border-box;
     
 }
+.gpa__navcharbox{
+    /* This is all filler */
+    position: relative; 
+    width: calc(50% - 4%);
+    margin: 2%;
+    box-sizing: border-box;
+}
 .gpa__term__header{
     display: grid;
     grid-template-columns: 1fr 1fr;
