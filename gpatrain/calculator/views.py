@@ -59,6 +59,11 @@ def calculate_gpa(request):
     except (ValueError, TypeError, KeyError) as e:
         return JsonResponse({'error': 'Invalid Input Data', 'details': str(e)}, status=400)
 
+@require_POST
+@csrf_exempt
+def upload_transcript(request):
+    return
+
 def load_path(request):
     return
 
@@ -70,29 +75,7 @@ def save_path(request):
 
 
 
-
-
-@require_POST
-@csrf_exempt
-def old_calculate_gpa(request):
-    try:
-        data = json.loads(request.body)
-        courses = data.get('courses', [])
-        total_points = 0.0
-        total_credits = 0.0
-
-        for course in courses:
-            credits = float(course.get('credits', 0))
-            grade = float(course.get('grade', 0))
-            if credits > 0 and grade >= 0:  # Basic validation
-                total_points += credits * grade
-                total_credits += credits
-
-        gpa = total_points / total_credits if total_credits else 0.0
-        return JsonResponse({'gpa': gpa})
-    except (ValueError, KeyError, TypeError) as e:
-        return JsonResponse({'error': 'Invalid input data', 'details': str(e)}, status=400)
-
+#Some of this can be used as "save_path()"
 @require_POST
 @csrf_exempt
 def db_calculate_gpa(request):

@@ -24,8 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
             updateGPA();
         });
     });
+    
+    document.getElementById('auto__entry__button').addEventListener('click', function(){
+        document.getElementById('transcript__file').click()
 
-
+    })
+    document.getElementById('transcript__file').addEventListener('change', function(){
+        document.getElementById('autoentry__form').submit()
+    })
 
 
     // Add event listeners to the course inputs for GPA calculation
@@ -39,13 +45,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
     function addTerm() {
         const term1 = document.getElementById('term1');
         const newTerm = term1.cloneNode(true);
         const termCount = document.querySelectorAll('.gpa__term').length;
         newTerm.id = `term${termCount + 1}`;
         newTerm.querySelector('.gpa__term__header .term__number').textContent = `Term ${termCount + 1}`;
+        newTerm.querySelector('.gpa__term__header .term__gpa').textContent = ``;
         newTerm.querySelectorAll('input').forEach(input => input.value = '');
         newTerm.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
 

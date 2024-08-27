@@ -60,17 +60,22 @@
                     <span class="button__text">Manual Entry</span>
                     <span class="button__icon"></span>
                 </button>
-                </a>
-                <a href="#" >
+            </a>
+            <!-- I want a file upload then after the upload to be tranferred to a filled out manual entry page -->
+            <!-- 1. Redirect with Data Passing 2. Form Pre-Population 3. JavaScript and AJAX 4. Single Page Application (SPA) Approach-->
+            <form id="autoentry__form" action="{% url 'auto_entry' %}" method="POST">
+                <input type="file" id="transcript__file" name="transcript-file" style="display: none;" accept=".pdf, .docx" />
+
                 <button type="button" class="entry__button" id="auto__entry__button"  > 
                     <span class="button__text">Automatic Entry</span>
                     <span class="button__icon"> </span>
                 </button>
-            </a>
-        </div>
-        
-        
+                
+            </form>
+                
+        </div> 
     </div>
+
     <div>
         <a href="#"><button type="button" id="btn-bigred">BIGRED</button></a>
     </div>
